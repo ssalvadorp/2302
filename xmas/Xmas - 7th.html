@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuestro primer 7 de Diciembre</title>
+    <style>
+        /* ===== RESET BÁSICO ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #8bdccf;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0 60px;
+        }
+
+        h1 {
+            color: #03363d;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        /* ===== CONTENEDOR DEL CARRUSEL ===== */
+        .carousel {
+            position: relative;
+            display: inline-block;   /* el tamaño lo define la imagen */
+            background: transparent; /* SIN fondo */
+        }
+
+        /* ===== IMAGEN ===== */
+        .carousel img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 95vw;
+            max-height: 80vh;
+        }
+
+        
+
+        
+
+        /* ===== BOTONES ===== */
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 28px;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-radius: 50%;
+            user-select: none;
+        }
+
+        .btn:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .prev { left: -50px; }
+        .next { right: -50px; }
+
+        @media (max-width: 600px) {
+            .prev { left: 10px; }
+            .next { right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Nuestro primer 7 de Diciembre &lt;3</h1>
+
+<div class="carousel">
+    <button class="btn prev" onclick="prev()">❮</button>
+    <img id="photo" src="" alt="Foto del carrusel">
+    <button class="btn next" onclick="next()">❯</button>
+</div>
+
+<script>
+    /* ===== LISTA DE FOTOS ===== */
+    const photos = [
+        "https://raw.githubusercontent.com/ssalvadorp/2302/main/xmas/candles.jpeg",
+        "https://raw.githubusercontent.com/ssalvadorp/2302/main/xmas/cunty.jpeg",
+        "https://raw.githubusercontent.com/ssalvadorp/2302/main/xmas/my%20men.jpeg",
+        "https://raw.githubusercontent.com/ssalvadorp/2302/main/xmas/us(2).jpeg",
+        "https://raw.githubusercontent.com/ssalvadorp/2302/main/xmas/us.jpeg",
+        "https://raw.githubusercontent.com/ssalvadorp/2302/main/xmas/waffles.jpeg"
+    ];
+
+    let index = 0;
+    const img = document.getElementById('photo');
+
+    function show() {
+        img.src = photos[index];
+    }
+
+    function next() {
+        index = (index + 1) % photos.length;
+        show();
+    }
+
+    function prev() {
+        index = (index - 1 + photos.length) % photos.length;
+        show();
+    }
+
+    // inicial
+    show();
+</script>
+
+</body>
+</html>
